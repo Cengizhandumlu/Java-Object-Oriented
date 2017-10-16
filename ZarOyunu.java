@@ -1,8 +1,8 @@
 import java.util.Random;
 public class Zaroyunu {
 
-	private static final Random randNum=new Random(6);//final atanýlan numaranýn tekrar
-													  //degistirilmemesi icin konuldu.
+	private static final Random randNum=new Random(6);//final atanilan numaranin tekrar  degistirilmemesi icin konuldu.
+													 
 	private enum Durum{Kazan,Kaybet,Devam};//Durum tipi olusturuldu.
 	
 	public static int ZarAt() {

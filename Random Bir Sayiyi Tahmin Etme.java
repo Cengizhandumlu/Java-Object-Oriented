@@ -48,7 +48,7 @@ public class SayiTahmini {
 			
 			else {
 				sayac++;
-				System.out.println("TEBRÝKLER sayiyi dogru tahmin ettiniz:"
+				System.out.println("TEBRÄ°KLER sayiyi dogru tahmin ettiniz:"
 			+"ulastiginiz hamle sayisi="+sayac);
 				break;
 				
@@ -60,7 +60,7 @@ public class SayiTahmini {
 	}
 		
 		if(sayac>=adim) {
-			System.out.println("UZGUNUZ tahmin hakkiniz doldu."+"KAYBETTÝNÝZ."
+			System.out.println("UZGUNUZ tahmin hakkiniz doldu."+"KAYBETTÄ°NÄ°Z."
 		+"tahmin etmenizi bekledigimiz sayi="+sayi);
 		}
 

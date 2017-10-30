@@ -1,63 +1,70 @@
-import java.util.Random;
-public class Zaroyunu {
 
-	private static final Random randNum=new Random(6);//final atanilan numaranin tekrar  degistirilmemesi icin konuldu.
-													 
-	private enum Durum{Kazan,Kaybet,Devam};//Durum tipi olusturuldu.
+import java.util.Random;
+
+public class ZarOyunu {
 	
-	public static int ZarAt() {
-		int zar1=randNum.nextInt(6);
-		int zar2=randNum.nextInt(6);
-		
-		return zar1+zar2;
-		
-	}
-	
+	private static Random num=new Random();//rastgele zar atmamiz icin gerekli olan Random kutuphanesini tanimladik
+	private enum Durum{Kazan,Kaybet,Devam};//durum adli bir degisken tipi tanımladim ve alacagi degerler kazan,kaybet ve devam
+
 	public static void main(String[] args) {
-		
 		int puan=0;
-		Durum oyunDurumu;
-		int zarToplami;
-		zarToplami=ZarAt();
-		
-		switch(zarToplami) {
+		int zartoplami;
+		Durum oyundurumu;
+		zartoplami=ZarAt();
+		System.out.println("attiginiz zarlarin toplami="+zartoplami );
+		switch(zartoplami) {
 		case 7:
-		case 11:
-			oyunDurumu=Durum.Kazan;
-			break;
+		case 11: oyundurumu=Durum.Kazan;
+		
 		case 2:
 		case 3:
-		case 12:
-			oyunDurumu=Durum.Kaybet;
-			break;
+		case 12: oyundurumu=Durum.Kaybet;
+		
+		default: oyundurumu=Durum.Devam;//diger durumlarda zartoplami aldigi puan olur 
+		puan=zartoplami;
+		System.out.println("puaniniz="+puan);
+		break;
+		
+		}
+		
+		while(oyundurumu==Durum.Devam) {//eger devam geldi ise zar atmaya devam et
+			zartoplami=ZarAt();//tekrar zar atildi
 			
-		default:
-			oyunDurumu=Durum.Devam;
-			puan=zarToplami;
-			break;
+			System.out.println("yeni puaniniz="+zartoplami);
+			
+			if(puan==zartoplami) {
+				oyundurumu=Durum.Kazan;
+			}
+			else {
+				if(zartoplami==7) {
+					oyundurumu=Durum.Kaybet;
+				}
+			}
+			
+			if(oyundurumu==Durum.Kazan) {
+				System.out.println("TEBRİKLER KAZANDINIZ");
+				
+			}
+			else {
+				
+				System.out.println("UZGUNUZ KAYBETTINIZ");
+			}
+			
 			
 		}
 		
-		if(oyunDurumu==Durum.Devam) {
-			
-			zarToplami=ZarAt();
-			if(zarToplami==puan) {
-				oyunDurumu=Durum.Kazan;
-			}
-			else if(zarToplami==7) {
-				oyunDurumu=Durum.Kaybet;
-			}
-			
-		}
 		
-		if(oyunDurumu==Durum.Kazan) {
-			System.out.println("Kazandiniz...");
-			
-		}
-		else {
-			System.out.println("Kaybetiniz...");
-		}
 
 	}
 	
+	public static int ZarAt() {
+		int zar1;
+		int zar2;
+		int toplam;
+		zar1=1+num.nextInt(6);
+		zar2=1+num.nextInt(6);
+		toplam=zar1+zar2;
+		return toplam;
+	}
+
 }
